@@ -1,0 +1,2750 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>甜點童話集・四間手作甜點店散步地圖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-cream: #FBF8F3;
+      --bg-card: #FFFFFF;
+      --bg-soft: #F4EFE6;
+      --ink-main: #3A2E28;
+      --ink-muted: #78685E;
+      --border-lace: #E6DDD0;
+      --gold-accent: #C7A063;
+      --wood-dark: #5B3E2B;
+      --wood-light: #8B6244;
+      --shop-1: #6B8E78;
+      --shop-2: #D98A4E;
+      --shop-3: #5D8AA8;
+      --shop-4: #C86D7C;
+      --shadow-card: 0 10px 28px rgba(58, 46, 40, 0.06), 0 2px 6px rgba(58, 46, 40, 0.04);
+      --shadow-hover: 0 16px 36px rgba(58, 46, 40, 0.12), 0 4px 10px rgba(58, 46, 40, 0.05);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-cream);
+      background-image:
+        radial-gradient(rgba(199, 160, 99, 0.16) 1.2px, transparent 0),
+        radial-gradient(rgba(200, 109, 124, 0.08) 1.2px, transparent 0);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+      color: var(--ink-main);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-serif {
+      font-family: 'Noto Serif TC', Georgia, serif;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ==================== 頂部黏性童話書籤導覽列 ==================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(251, 248, 243, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-lace);
+    }
+
+    .nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1.5px solid var(--gold-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      box-shadow: 0 2px 8px rgba(199, 160, 99, 0.22);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink-main);
+      letter-spacing: 0.03em;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg-card);
+      border: 1px solid var(--border-lace);
+      color: var(--ink-main);
+      box-shadow: 0 2px 6px rgba(58, 46, 40, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn:hover {
+      border-color: var(--gold-accent);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(58, 46, 40, 0.08);
+    }
+
+    .pill-btn-wood {
+      background: linear-gradient(135deg, #F8EFE4, #EFE0CE);
+      border-color: #C49E73;
+      color: var(--wood-dark);
+      font-weight: 600;
+    }
+
+    .pill-btn-dark {
+      background: var(--ink-main);
+      color: #FFFDF9;
+      border-color: var(--ink-main);
+    }
+
+    .pill-btn-dark:hover {
+      background: #524139;
+      border-color: #524139;
+      color: #FFFDF9;
+    }
+
+    .badge-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: var(--radius-pill);
+      background: var(--shop-4);
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* ==================== 螢幕右側懸掛式「旅人留言板」木牌 ==================== */
+    .floating-wood-sign {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 45;
+      background: linear-gradient(180deg, #7C553A 0%, #5B3E2B 100%);
+      color: #FFF9F0;
+      border: 2px solid #D8B47C;
+      border-right: none;
+      border-radius: 18px 0 0 18px;
+      padding: 16px 12px;
+      box-shadow: -6px 8px 24px rgba(58, 46, 40, 0.22);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.25s ease, padding-right 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .floating-wood-sign::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E8C78E;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    }
+
+    .floating-wood-sign:hover {
+      padding-right: 18px;
+      box-shadow: -8px 12px 30px rgba(58, 46, 40, 0.3);
+    }
+
+    .wood-sign-text {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      line-height: 1.2;
+    }
+
+    .wood-sign-badge {
+      background: #D98A4E;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #F7DFC2;
+    }
+
+    @media (max-width: 640px) {
+      .floating-wood-sign {
+        top: auto;
+        bottom: 18px;
+        right: 16px;
+        transform: none;
+        border: 2px solid #D8B47C;
+        border-radius: 999px;
+        flex-direction: row;
+        padding: 10px 16px;
+      }
+      .floating-wood-sign:hover {
+        padding-right: 16px;
+      }
+      .wood-sign-text {
+        writing-mode: horizontal-tb;
+        letter-spacing: 0.05em;
+        font-size: 13px;
+      }
+    }
+
+    /* ==================== 主容器與首頁雙欄佈局 ==================== */
+    .container {
+      max-width: 1320px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 24px 72px;
+      flex: 1;
+    }
+
+    .hero-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 28px;
+      padding: 22px 24px;
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-lace);
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+
+    .hero-header::after {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 18px;
+      border: 1px dashed rgba(199, 160, 99, 0.55);
+      pointer-events: none;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold-accent);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .hero-title {
+      font-size: clamp(22px, 3.4vw, 31px);
+      font-weight: 700;
+      color: var(--ink-main);
+      margin-bottom: 6px;
+    }
+
+    .hero-desc {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+    }
+
+    /* 首頁核心：左側 2x2 四格小店櫥窗 + 右側常駐轉盤面板 */
+    .home-split-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.85fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    @media (max-width: 1040px) {
+      .home-split-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .shops-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 680px) {
+      .shops-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .shop-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 13px;
+      border: 1px solid var(--border-lace);
+      box-shadow: var(--shadow-card);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .shop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--gold-accent);
+    }
+
+    .shop-card-inner {
+      border: 1px dashed rgba(199, 160, 99, 0.45);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 11px;
+    }
+
+    .polaroid-box {
+      position: relative;
+      border-radius: 13px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-lace);
+    }
+
+    .polaroid-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .shop-card:hover .polaroid-box img {
+      transform: scale(1.04);
+    }
+
+    .chapter-ribbon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      color: #FFF;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+    }
+
+    .photo-replace-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 253, 249, 0.94);
+      border: 1px solid var(--border-lace);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-main);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+      z-index: 2;
+    }
+
+    .photo-replace-btn:hover {
+      background: var(--ink-main);
+      color: #FFF;
+    }
+
+    .shop-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--ink-muted);
+    }
+
+    .shop-rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 9px;
+      border-radius: var(--radius-pill);
+      background: #FFF8EB;
+      border: 1px solid #F0DFC0;
+      color: #9A6726;
+      font-weight: 600;
+      font-size: 11.5px;
+    }
+
+    .shop-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink-main);
+      line-height: 1.35;
+    }
+
+    .shop-tagline {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .shop-info-list {
+      background: var(--bg-cream);
+      border-radius: var(--radius-md);
+      padding: 8px 11px;
+      font-size: 12px;
+      color: var(--ink-main);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .shop-card-actions {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 2px;
+    }
+
+    .btn-open-menu {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: var(--radius-pill);
+      color: #FFF;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(58, 46, 40, 0.12);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-open-menu:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-sm {
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-cream);
+      border: 1px solid var(--border-lace);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-main);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-outline-sm:hover {
+      border-color: var(--gold-accent);
+    }
+
+    /* ==================== 右側常駐「四格餐廳抽選轉盤」面板 ==================== */
+    .wheel-sidebar-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      border: 1.5px solid var(--gold-accent);
+      box-shadow: var(--shadow-card);
+      position: sticky;
+      top: 78px;
+    }
+
+    .wheel-sidebar-inner {
+      border: 1px dashed rgba(199, 160, 99, 0.6);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      text-align: center;
+      background: linear-gradient(180deg, #FFFDF9 0%, #FAF5EC 100%);
+    }
+
+    .wheel-stage {
+      position: relative;
+      width: 268px;
+      height: 268px;
+      margin: 14px auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wheel-pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.22));
+    }
+
+    .wheel-spin-center {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--ink-main);
+      color: #FFFDF9;
+      border: 3px solid var(--gold-accent);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.26);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease;
+    }
+
+    .wheel-spin-center:hover {
+      transform: scale(1.06);
+    }
+
+    .wheel-result-card {
+      background: #FFFFFF;
+      border: 1px dashed var(--gold-accent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      text-align: center;
+    }
+
+    /* ==================== 單店菜單詳情視圖 ==================== */
+    .hidden {
+      display: none !important;
+    }
+
+    .shop-detail-banner {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      border: 1px solid var(--border-lace);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .shop-detail-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-lace);
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--gold-accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--ink-main);
+    }
+
+    .category-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cat-pill {
+      padding: 7px 15px;
+      border-radius: var(--radius-pill);
+      font-size: 12.5px;
+      font-weight: 500;
+      background: var(--bg-card);
+      border: 1px solid var(--border-lace);
+      color: var(--ink-muted);
+      transition: all 0.2s ease;
+    }
+
+    .cat-pill.active, .cat-pill:hover {
+      background: var(--ink-main);
+      color: #FFF;
+      border-color: var(--ink-main);
+    }
+
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 960px) {
+      .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .dishes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dish-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      border: 1px solid var(--border-lace);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .dish-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .dish-photo-wrap {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-lace);
+      cursor: pointer;
+    }
+
+    .dish-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .dish-card:hover .dish-photo-wrap img {
+      transform: scale(1.05);
+    }
+
+    .dish-cat-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 253, 249, 0.94);
+      border: 1px solid var(--border-lace);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-main);
+    }
+
+    .dish-body {
+      padding: 12px 4px 4px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 8px;
+    }
+
+    .dish-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink-main);
+      cursor: pointer;
+    }
+
+    .dish-title:hover {
+      color: var(--shop-2);
+    }
+
+    .dish-desc {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .dish-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-lace);
+    }
+
+    .dish-price {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink-main);
+    }
+
+    /* ==================== 右側滑出抽屜（留言板 & 心願清單） ==================== */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 65;
+      background: rgba(58, 46, 40, 0.48);
+      backdrop-filter: blur(3px);
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .drawer-backdrop.open {
+      display: flex;
+    }
+
+    .drawer-panel {
+      width: 100%;
+      max-width: 480px;
+      height: 100%;
+      background: var(--bg-cream);
+      border-left: 2px solid var(--gold-accent);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -14px 0 38px rgba(58, 46, 40, 0.2);
+    }
+
+    .drawer-header {
+      padding: 18px 20px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-lace);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 20px;
+    }
+
+    .drawer-footer {
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-lace);
+    }
+
+    /* 留言板表單與卡片 */
+    .review-form-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      border: 1px solid var(--border-lace);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 18px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 460px) {
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 11px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--ink-main);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 9px 11px;
+      border-radius: var(--radius-md);
+      background: var(--bg-cream);
+      border: 1px solid var(--border-lace);
+      font-size: 13px;
+      color: var(--ink-main);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold-accent);
+      background: #FFF;
+    }
+
+    .star-picker {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg-cream);
+      border: 1px solid var(--border-lace);
+    }
+
+    .star-btn {
+      font-size: 20px;
+      line-height: 1;
+      color: #D8CFC2;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    .star-btn.active {
+      color: #E5A93B;
+    }
+
+    .star-btn:hover {
+      transform: scale(1.15);
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 15px;
+      border: 1px solid var(--border-lace);
+      box-shadow: 0 4px 14px rgba(58, 46, 40, 0.04);
+      margin-bottom: 12px;
+    }
+
+    .avatar-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      border: 1px solid var(--gold-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--ink-main);
+      flex-shrink: 0;
+    }
+
+    .star-display {
+      color: #E5A93B;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .wish-item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      border: 1px solid var(--border-lace);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .qty-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-lace);
+      border-radius: var(--radius-pill);
+      padding: 2px 8px;
+      font-size: 13px;
+    }
+
+    /* ==================== 彈窗通用樣式 ==================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(58, 46, 40, 0.52);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1.5px solid var(--gold-accent);
+      max-width: 480px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 54px rgba(58, 46, 40, 0.24);
+      position: relative;
+      padding: 24px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-lace);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: var(--ink-main);
+      z-index: 5;
+    }
+
+    .modal-close:hover {
+      background: var(--ink-main);
+      color: #FFF;
+    }
+
+    /* 輕量提示氣泡 */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      z-index: 80;
+      background: var(--ink-main);
+      color: #FFFDF9;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 16px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border-lace);
+      background: rgba(255, 255, 255, 0.55);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 頂部童話書籤導覽列 ==================== -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <button type="button" class="brand-btn" onclick="goHome()">
+        <span class="brand-icon">📖</span>
+        <div>
+          <div class="brand-title">甜點童話集・四間手作甜點店散步地圖</div>
+          <div class="brand-sub">ARTISANAL PATISSERIE · STORYBOOK GUIDE</div>
+        </div>
+      </button>
+
+      <div class="nav-actions">
+        <button type="button" class="pill-btn pill-btn-wood" onclick="openReviewDrawer()">
+          <span>🪵</span>
+          <span>旅人留言板</span>
+          <span id="nav-review-count" class="badge-count" style="background: #8B6244;">4</span>
+        </button>
+
+        <button type="button" class="pill-btn pill-btn-dark" onclick="toggleWishlistDrawer(true)">
+          <span>❤️</span>
+          <span>甜點心願清單</span>
+          <span id="nav-wish-count" class="badge-count">0</span>
+        </button>
+
+        <button type="button" class="pill-btn" onclick="exportFullHtml()" title="將目前照片與評論打包下載成單一 HTML 檔案">
+          <span>📥</span>
+          <span>匯出完整 HTML</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 右側懸掛式「旅人留言板」童話木牌 ==================== -->
+  <button type="button" class="floating-wood-sign" onclick="openReviewDrawer()" title="點擊打開旅人茶會評論留言板">
+    <span style="font-size: 18px;">💬</span>
+    <span class="wood-sign-text">旅人留言板</span>
+    <span id="wood-review-count" class="wood-sign-badge">4</span>
+  </button>
+
+  <main class="container">
+    <!-- ==================== 畫面一：首頁清爽雙欄（左側四格餐廳 + 右側抽選轉盤） ==================== -->
+    <section id="home-view">
+      <div class="hero-header">
+        <span class="hero-kicker">✦ PATISSERIE FAIRYTALE MAP ✦</span>
+        <h1 class="hero-title">推開四間台灣人氣手作甜點店的木門</h1>
+        <p class="hero-desc">
+          點擊左側任一小店櫥窗翻閱專屬菜單，或轉動右側「童話命運輪盤」為今日下午茶抽取命定甜點屋 ✨
+        </p>
+      </div>
+
+      <div class="home-split-layout">
+        <!-- 左側：2x2 四格餐廳櫥窗 -->
+        <div id="shops-grid" class="shops-grid"></div>
+
+        <!-- 右側：常駐「四家餐廳抽選轉盤」面板 -->
+        <aside class="wheel-sidebar-card">
+          <div class="wheel-sidebar-inner">
+            <span class="section-kicker">✦ DESTINY PATISSERIE WHEEL ✦</span>
+            <h2 class="font-serif" style="font-size: 21px; font-weight: 700;">🎡 今天吃哪家？抽選轉盤</h2>
+            <p style="font-size: 12.5px; color: var(--ink-muted); margin-top: 4px;">
+              選擇困難嗎？轉動羅盤從四間甜點屋中抽出今日去處！
+            </p>
+
+            <div class="wheel-stage">
+              <div class="wheel-pointer">
+                <svg width="32" height="38" viewBox="0 0 34 40" fill="none">
+                  <path d="M17 38L3 13C1.5 8 5.5 2 17 2C28.5 2 32.5 8 31 13L17 38Z" fill="#3A2E28" stroke="#C7A063" stroke-width="2"/>
+                  <circle cx="17" cy="13" r="4.5" fill="#FBF8F3"/>
+                </svg>
+              </div>
+              <canvas id="wheel-canvas" width="268" height="268" style="border-radius: 50%; cursor: pointer;" onclick="spinWheel()"></canvas>
+              <button type="button" id="wheel-spin-btn" class="wheel-spin-center" onclick="spinWheel()">
+                <span>轉動抽選</span>
+                <span style="font-size: 9.5px; color: #C7A063; letter-spacing: 0.08em;">SPIN</span>
+              </button>
+            </div>
+
+            <div id="wheel-result-box" class="wheel-result-card">
+              <p style="font-size: 12.5px; color: var(--ink-muted); line-height: 1.6;">
+                點擊中央「<strong>轉動抽選</strong>」按鈕，<br/>抽取你的今日命定甜點店與幸運招牌甜點 🍰
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== 畫面二：單店菜單介紹頁 ==================== -->
+    <section id="shop-detail-view" class="hidden">
+      <div style="margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <button type="button" class="pill-btn" onclick="goHome()">
+          <span>←</span>
+          <span>返回四間小店與轉盤</span>
+        </button>
+
+        <button type="button" id="detail-open-review-btn" class="pill-btn pill-btn-wood" onclick="openReviewDrawer(currentShopId)">
+          <span>💬</span>
+          <span>寫這家店的評論 / 看旅人評價</span>
+        </button>
+      </div>
+
+      <div id="shop-detail-banner" class="shop-detail-banner"></div>
+
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">SIGNATURE PATISSERIE MENU</span>
+          <h2 class="section-title">🍰 招牌手作甜點菜單</h2>
+        </div>
+        <div id="dish-category-bar" class="category-bar"></div>
+      </div>
+
+      <div id="dishes-grid" class="dishes-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    甜點童話集・四間手作甜點店散步地圖 ｜ 收錄點點甜甜、Ponpie、Bonbons 甜點工作室、Kaffee Amadeus 阿瑪迪斯咖啡館
+  </footer>
+
+  <!-- ==================== 抽屜 1：獨立「旅人茶會評論留言板」 ==================== -->
+  <div id="review-drawer" class="drawer-backdrop" onclick="if(event.target===this) closeReviewDrawer()">
+    <aside class="drawer-panel">
+      <div class="drawer-header">
+        <div>
+          <span class="section-kicker" style="margin-bottom: 2px;">TRAVELERS' GUESTBOOK</span>
+          <h3 class="font-serif" style="font-size: 19px; font-weight: 700;">🪵 旅人茶會評論留言板</h3>
+        </div>
+        <button type="button" class="pill-btn" onclick="closeReviewDrawer()">✕ 關閉</button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- 撰寫評論表單 -->
+        <div class="review-form-box">
+          <form onsubmit="submitReview(event)">
+            <div style="font-family: 'Noto Serif TC', serif; font-size: 15.5px; font-weight: 700; margin-bottom: 10px;">
+              ✍️ 寫下這一餐的甜蜜心得
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">選擇店家</label>
+                <select id="rev-shop-select" class="form-control" onchange="syncReviewDishOptions()"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">品嚐甜點（選填）</label>
+                <select id="rev-dish-select" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">這次用餐評分</label>
+                <div id="rev-stars-box" data-rating="5" class="star-picker">
+                  <button type="button" class="star-btn active" data-val="1" onclick="setFormRating(1)">★</button>
+                  <button type="button" class="star-btn active" data-val="2" onclick="setFormRating(2)">★</button>
+                  <button type="button" class="star-btn active" data-val="3" onclick="setFormRating(3)">★</button>
+                  <button type="button" class="star-btn active" data-val="4" onclick="setFormRating(4)">★</button>
+                  <button type="button" class="star-btn active" data-val="5" onclick="setFormRating(5)">★</button>
+                  <span id="rev-rating-label" style="margin-left: auto; font-size: 11.5px; color: var(--ink-muted); font-weight: 600;">5 星</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">旅人暱稱 *</label>
+                <input type="text" id="rev-author-input" required maxlength="20" placeholder="例如：甜點小精靈" class="form-control" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="display: flex; justify-content: space-between;">
+                <span>心得（最多 500 字）*</span>
+                <span id="rev-char-count" style="font-weight: 400; color: var(--ink-muted);">0 / 500</span>
+              </label>
+              <textarea
+                id="rev-comment-input"
+                rows="3"
+                required
+                maxlength="500"
+                placeholder="分享這道甜點的口味、茶香或店內氛圍..."
+                class="form-control"
+                oninput="updateCharCount()"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="pill-btn pill-btn-dark" style="width: 100%; justify-content: center; padding: 10px;">
+              💌 送出評論
+            </button>
+          </form>
+        </div>
+
+        <!-- 店家篩選標籤與評論列表 -->
+        <div style="margin-bottom: 12px;">
+          <div id="drawer-review-filters" class="category-bar"></div>
+        </div>
+        <div id="drawer-reviews-list"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== 抽屜 2：甜點心願清單 ==================== -->
+  <div id="wishlist-drawer" class="drawer-backdrop" onclick="if(event.target===this) toggleWishlistDrawer(false)">
+    <aside class="drawer-panel" style="max-width: 400px;">
+      <div class="drawer-header">
+        <div>
+          <h3 class="font-serif" style="font-size: 18px; font-weight: 700;">❤️ 我的甜點心願清單</h3>
+          <span style="font-size: 12px; color: var(--ink-muted);">收藏想吃的蛋糕並自動統計預算</span>
+        </div>
+        <button type="button" class="pill-btn" onclick="toggleWishlistDrawer(false)">✕</button>
+      </div>
+
+      <div id="wishlist-items-box" class="drawer-body"></div>
+
+      <div class="drawer-footer">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <span style="font-size: 13.5px; color: var(--ink-muted);">預估甜蜜總金額</span>
+          <span id="wishlist-total-price" class="font-serif" style="font-size: 20px; font-weight: 700;">NT$ 0</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="pill-btn" style="flex: 1; justify-content: center;" onclick="clearWishlist()">清空清單</button>
+          <button type="button" class="pill-btn pill-btn-dark" style="flex: 2; justify-content: center;" onclick="copyWishlistText()">📋 複製清單文字</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== 彈窗 1：甜點風味筆記詳情 ==================== -->
+  <div id="dish-modal" class="modal-backdrop" onclick="if(event.target===this) closeDishModal()">
+    <div class="modal-box" style="padding: 0; overflow: hidden;">
+      <button type="button" class="modal-close" onclick="closeDishModal()" aria-label="關閉">✕</button>
+      <div id="dish-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 彈窗 2：替換店家外觀照片 ==================== -->
+  <div id="photo-modal" class="modal-backdrop" onclick="if(event.target===this) closePhotoModal()">
+    <div class="modal-box">
+      <button type="button" class="modal-close" onclick="closePhotoModal()" aria-label="關閉">✕</button>
+      <span class="section-kicker">CUSTOMIZE STOREFRONT PHOTO</span>
+      <h3 id="photo-modal-title" class="font-serif" style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">替換店家外觀照片</h3>
+
+      <div class="form-group">
+        <label class="form-label">方式一：上傳電腦或手機裡的實拍照片</label>
+        <input type="file" id="photo-file-input" accept="image/*" class="form-control" onchange="handleLocalPhotoUpload(event)" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">方式二：貼上圖片網址（URL）</label>
+        <input type="url" id="photo-url-input" placeholder="https://..." class="form-control" />
+      </div>
+
+      <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px;">
+        <button type="button" class="pill-btn" onclick="resetSingleShopPhoto()">恢復預設照片</button>
+        <button type="button" class="pill-btn pill-btn-dark" onclick="applyPhotoUrl()">套用網址照片</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 輕量提示浮標 -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // =========================================================================
+    // 1. 四間台灣手作甜點店與 24 道精準視覺對應甜點資料
+    // =========================================================================
+    const DEFAULT_SHOPS = [
+      {
+        id: "shop-1",
+        chapter: "Chapter I",
+        shortName: "點點甜甜",
+        name: "點點甜甜 Ten Ten Den Den",
+        color: "#6B8E78",
+        wheelBg: "#DCE8E0",
+        address: "新北市板橋區光正街45巷2弄2號",
+        hours: "12:30 - 20:00",
+        website: "https://www.tentendenden.com/",
+        tagline: "隱身板橋巷弄的木質甜點屋，以宇治小山園抹茶與台灣好茶烘烤溫柔日常。",
+        storePhoto: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80",
+        dishes: [
+          {
+            id: "d1-1",
+            name: "［常磐］小山園抹茶戚風蛋糕",
+            price: 700,
+            category: "人氣戚風",
+            svgKind: "matcha_chiffon",
+            photo: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=800&q=80",
+            desc: "翠綠宇治丸久小山園抹茶戚風與濃郁抹茶淋醬，茶韻深邃微苦回甘，蛋糕體濕潤蓬鬆。",
+            ingredients: "丸久小山園抹茶粉、北海道十勝鮮奶油、放牧雞蛋、日本紫羅蘭低筋麵粉",
+            pairing: "無糖冷泡煎茶 / 熱美式咖啡"
+          },
+          {
+            id: "d1-2",
+            name: "冬日限定－草莓鮮奶油蛋糕",
+            price: 1280,
+            category: "季節限定",
+            svgKind: "strawberry_shortcake",
+            photo: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80",
+            desc: "雪白北海道鮮奶油層層堆疊大湖新鮮紅草莓，香草海綿蛋糕柔嫩細緻、酸甜清爽。",
+            ingredients: "苗栗大湖新鮮草莓、北海道中澤鮮奶油、馬達加斯加香草莢",
+            pairing: "大吉嶺春摘紅茶 / 氣泡礦泉水"
+          },
+          {
+            id: "d1-3",
+            name: "黑糖奶茶巴斯克",
+            price: 980,
+            category: "濃郁乳酪",
+            svgKind: "brown_sugar_basque",
+            photo: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80",
+            desc: "焦香微苦表面與醇厚黑糖錫蘭奶茶流心巴斯克乳酪，口感綿密滑順、茶奶香交織。",
+            ingredients: "澳洲奶油乳酪、手炒台南關山黑糖、錫蘭莊園紅茶、動物性鮮奶油",
+            pairing: "炭焙烏龍茶 / 冰美式咖啡"
+          },
+          {
+            id: "d1-4",
+            name: "酥菠蘿莓果溫蛋糕",
+            price: 780,
+            category: "溫暖烘焙",
+            svgKind: "berry_crumble",
+            photo: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=800&q=80",
+            desc: "金黃香酥奶酥菠蘿鋪滿酸甜綜合莓果溫蛋糕，微溫享用散發濃郁發酵奶油香氣。",
+            ingredients: "法國發酵奶油、綜合野莓果泥、杏仁粉、紅糖酥菠蘿",
+            pairing: "皇家伯爵紅茶 / 燕麥拿鐵"
+          },
+          {
+            id: "d1-5",
+            name: "達克瓦茲好茶禮盒",
+            price: 620,
+            category: "伴手禮盒",
+            svgKind: "dacquoise_tea",
+            photo: "https://images.unsplash.com/photo-1558326567-98ae2405596b?auto=format&fit=crop&w=800&q=80",
+            desc: "外殼微酥糖霜、內裡鬆軟的法式杏仁蛋白餅，夾入濃郁台灣焙茶與鐵觀音奶油霜。",
+            ingredients: "西班牙杏仁粉、木柵鐵觀音茶粉、日本宇治焙茶、法式奶油霜",
+            pairing: "東方美人茶 / 手沖淺焙咖啡"
+          },
+          {
+            id: "d1-6",
+            name: "鐵觀音紅心芭樂戚風",
+            price: 680,
+            category: "人氣戚風",
+            svgKind: "guava_chiffon",
+            photo: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=800&q=80",
+            desc: "焙火鐵觀音茶香戚風搭配粉嫩紅心芭樂果泥與梅子甘露奶霜，果香清新尾韻甘醇。",
+            ingredients: "木柵焙火鐵觀音、彰化社頭紅心芭樂、梅子果露、十勝鮮奶油",
+            pairing: "四季春青茶 / 檸檬氣泡飲"
+          }
+        ]
+      },
+      {
+        id: "shop-2",
+        chapter: "Chapter II",
+        shortName: "Ponpie 澎派",
+        name: "Ponpie 台灣水果塔專門店",
+        color: "#D98A4E",
+        wheelBg: "#F7E4D2",
+        address: "新北市板橋區民權路202巷4弄1號",
+        hours: "12:00 - 19:30",
+        website: "https://www.ponpie.tw/",
+        tagline: "堅持使用台灣小農鮮果與在地物產，將四季風土揉進酥香手作塔皮。",
+        storePhoto: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=900&q=80",
+        dishes: [
+          {
+            id: "d2-1",
+            name: "無花果麻糬蛋糕",
+            price: 280,
+            category: "招牌塔派",
+            svgKind: "fig_mochi_tart",
+            photo: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=800&q=80",
+            desc: "新鮮紫紅無花果切面點綴，搭配軟Q白玉麻糬夾心與滑順香草乳酪塔餡。",
+            ingredients: "台灣小農新鮮無花果、手作白玉麻糬、香草卡士達、杏仁甜塔皮",
+            pairing: "白毫烏龍茶 / 熱拿鐵咖啡"
+          },
+          {
+            id: "d2-2",
+            name: "森林莓果麻糬蛋糕",
+            price: 250,
+            category: "麻糬乳酪",
+            svgKind: "forest_berry_cake",
+            photo: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+            desc: "藍莓、覆盆子與新鮮草莓覆蓋在柔軟麻糬乳酪蛋糕上，酸甜果韻與Q彈口感完美融合。",
+            ingredients: "新鮮藍莓、覆盆子、草莓、手作麻糬、北海道奶油乳酪",
+            pairing: "洋甘菊花草茶 / 冰紅茶"
+          },
+          {
+            id: "d2-3",
+            name: "季節水果布丁杯",
+            price: 160,
+            category: "午茶甜點",
+            svgKind: "fruit_pudding_cup",
+            photo: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+            desc: "滑嫩焦糖雞蛋布丁層疊當季新鮮切塊水果與輕盈鮮奶油，懷舊又繽紛的午茶小點。",
+            ingredients: "放牧紅殼雞蛋、香草籽焦糖液、當季新鮮切塊水果、鮮奶油",
+            pairing: "阿薩姆奶茶 / 冷萃咖啡"
+          },
+          {
+            id: "d2-4",
+            name: "國產荔枝蜜四季水果塔",
+            price: 190,
+            category: "招牌塔派",
+            svgKind: "seasonal_fruit_tart",
+            photo: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=800&q=80",
+            desc: "酥脆杏仁塔皮盛裝荔枝花蜜卡士達與繽紛當季鮮果（奇異果、草莓與藍莓）。",
+            ingredients: "國產荔枝花蜜、奇異果、草莓、藍莓、香草卡士達",
+            pairing: "錫蘭莊園紅茶 / 冰美式"
+          },
+          {
+            id: "d2-5",
+            name: "台農57號黃金地瓜塔",
+            price: 170,
+            category: "在地小農",
+            svgKind: "sweet_potato_tart",
+            photo: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=800&q=80",
+            desc: "綿密金黃台農57號地瓜泥擠花與炙燒焦糖香氣法式甜塔，溫潤自然甘甜充滿土地暖意。",
+            ingredients: "雲林台農57號黃金地瓜、法國依思尼奶油、黑糖焦糖脆片",
+            pairing: "玄米煎茶 / 焙茶拿鐵"
+          },
+          {
+            id: "d2-6",
+            name: "無花果麻糬蛋糕・6吋",
+            price: 1680,
+            category: "盛宴整模",
+            svgKind: "fig_cake_6inch",
+            photo: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80",
+            desc: "慶生與聚會盛宴尺寸整模無花果麻糬乳酪蛋糕，滿滿新鮮無花果花圈華麗登場。",
+            ingredients: "整盒小農新鮮無花果、Q彈麻糬夾層、香草乳酪餡、酥香塔底",
+            pairing: "高山烏龍茶 / 氣泡白酒"
+          }
+        ]
+      },
+      {
+        id: "shop-3",
+        chapter: "Chapter III",
+        shortName: "Bonbons 甜點",
+        name: "Bonbons 甜點工作室",
+        color: "#5D8AA8",
+        wheelBg: "#DCE8F0",
+        address: "苗栗市英明街68號 / 日新街5號",
+        hours: "11:00 - 19:00",
+        website: "https://www.bonbonsstudio.com.tw/",
+        tagline: "苗栗山城裡的法式乳酪與麻糬名店，將貓裏紅紅茶與在地物產融入細膩烘焙。",
+        storePhoto: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80",
+        dishes: [
+          {
+            id: "d3-1",
+            name: "經典款福福麻糬（草莓/芋泥乳酪大福）",
+            price: 250,
+            category: "福福麻糬",
+            svgKind: "fufu_mochi",
+            photo: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80",
+            desc: "軟糯雪白麻糬皮包裹濃醇生乳酪與草莓、大甲芋泥果餡的日式大福，冰涼享用如冰淇淋般細緻。",
+            ingredients: "日本糯米粉、北海道生乳酪、大湖草莓、大甲檳榔心芋泥",
+            pairing: "苗栗貓裏紅紅茶 / 無糖綠茶"
+          },
+          {
+            id: "d3-2",
+            name: "貓裏紅蘋果生乳酪（6吋）",
+            price: 900,
+            category: "6吋乳酪",
+            svgKind: "apple_cheesecake",
+            photo: "https://images.unsplash.com/photo-1524351199678-941a58a3df50?auto=format&fit=crop&w=800&q=80",
+            desc: "苗栗獲獎「貓裏紅」紅茶生乳酪搭配焦糖肉桂蜜蘋果片，茶香雅致、果香清甜。",
+            ingredients: "苗栗貓裏紅紅茶葉、富士蜜蘋果、澳洲奶油乳酪、消化餅乾底",
+            pairing: "苗栗貓裏紅紅茶 / 蘋果花果茶"
+          },
+          {
+            id: "d3-3",
+            name: "屏東萬丹紅豆麻糬巴斯克（6吋）",
+            price: 840,
+            category: "6吋乳酪",
+            svgKind: "redbean_basque",
+            photo: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=800&q=80",
+            desc: "焦香半熟巴斯克乳酪夾入飽滿萬丹紅豆粒與軟Q麻糬，鹹甜交織、層次感十足。",
+            ingredients: "屏東萬丹紅豆、手作軟Q麻糬、奶油乳酪、法國鮮奶油",
+            pairing: "熱炭焙烏龍 / 黑咖啡"
+          },
+          {
+            id: "d3-4",
+            name: "經典胖胖包餡瑪德蓮禮盒",
+            price: 580,
+            category: "法式禮盒",
+            svgKind: "madeleine_box",
+            photo: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
+            desc: "圓潤飽滿貝殼造型法式瑪德蓮蛋糕，內藏檸檬凝乳、宇治抹茶與70%濃可可流心內餡。",
+            ingredients: "法國發酵奶油、屏東檸檬、小山園抹茶、法芙娜可可",
+            pairing: "維也納咖啡 / 伯爵鮮奶茶"
+          },
+          {
+            id: "d3-5",
+            name: "黑熊x石虎綜合堅果塔禮盒",
+            price: 640,
+            category: "法式禮盒",
+            svgKind: "nut_tart_box",
+            photo: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=800&q=80",
+            desc: "結合台灣生態保育設計，焦糖夏威夷豆、核桃與杏仁鋪滿酥脆手工塔殼，香脆不黏牙。",
+            ingredients: "澳洲夏威夷豆、加州核桃、杏仁果、龍眼蜜焦糖醬",
+            pairing: "高山烏龍茶 / 莊園拿鐵"
+          },
+          {
+            id: "d3-6",
+            name: "在地款福福麻糬禮盒",
+            price: 250,
+            category: "福福麻糬",
+            svgKind: "hakka_mochi",
+            photo: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80",
+            desc: "融合客家擂茶、萬丹紅豆與北港花生香氣的創意麻糬大福，充滿山城茶韻與堅果香。",
+            ingredients: "北埔客家擂茶粉、北港焙炒花生醬、萬丹紅豆、生乳酪餡",
+            pairing: "東方美人茶 / 熱玄米茶"
+          }
+        ]
+      },
+      {
+        id: "shop-4",
+        chapter: "Chapter IV",
+        shortName: "阿瑪迪斯",
+        name: "Kaffee Amadeus 阿瑪迪斯咖啡館",
+        color: "#C86D7C",
+        wheelBg: "#F4DCE0",
+        address: "台北 SOGO 復興館 10F / 京站 2F",
+        hours: "11:00 - 21:30",
+        website: "https://www.kaffeeamadeus.com/",
+        tagline: "承襲維也納百年咖啡館優雅沙龍精神，獻上如古典樂章般精緻的歐風蛋糕。",
+        storePhoto: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80",
+        dishes: [
+          {
+            id: "d4-1",
+            name: "起司布朗尼 Cheese Brownie（4吋）",
+            price: 660,
+            category: "4吋精緻蛋糕",
+            svgKind: "cheese_brownie",
+            photo: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80",
+            desc: "濃郁70%苦甜巧克力布朗尼交織大理石重乳酪紋理，口感紮實綿密、可可香氣深邃。",
+            ingredients: "70%歐洲苦甜巧克力、澳洲重乳酪、核桃碎、發酵奶油",
+            pairing: "維也納米朗琪咖啡 / 濃縮咖啡"
+          },
+          {
+            id: "d4-2",
+            name: "心芯 Heart to Heart（4吋）",
+            price: 760,
+            category: "4吋精緻蛋糕",
+            svgKind: "heart_mousse",
+            photo: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+            desc: "紅寶石鏡面愛心造型覆盆子白巧克力慕斯蛋糕，酸甜果凍夾心搭配滑順香草慕斯。",
+            ingredients: "法國覆盆子果泥、比利時白巧克力、香草慕斯、杏仁海綿蛋糕",
+            pairing: "玫瑰花果茶 / 香檳氣泡飲"
+          },
+          {
+            id: "d4-3",
+            name: "夢幻島 Neverland（6吋）",
+            price: 1180,
+            category: "6吋典藏蛋糕",
+            svgKind: "neverland_cake",
+            photo: "https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=800&q=80",
+            desc: "維也納宮廷風華麗水果與開心果香草奶油蛋糕，酸甜爽口不甜膩，宛如童話藝術品。",
+            ingredients: "西西里開心果醬、綜合鮮果、香草卡士達慕斯、白巧克力飾片",
+            pairing: "大吉嶺莊園紅茶 / 冰美式"
+          },
+          {
+            id: "d4-4",
+            name: "芋頭喬琪紗 Taro Chiffon Cake（4吋）",
+            price: 580,
+            category: "4吋精緻蛋糕",
+            svgKind: "taro_chiffon",
+            photo: "https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=800&q=80",
+            desc: "淡雅粉紫色大甲芋泥夾層與輕盈如喬琪紗般的戚風蛋糕，芋香溫潤自然、口感雲朵般柔軟。",
+            ingredients: "大甲檳榔心芋頭、北海道鮮奶油、紫薯粉、放牧雞蛋",
+            pairing: "桂花烏龍茶 / 熱拿鐵"
+          },
+          {
+            id: "d4-5",
+            name: "茗茶 Tea Infused Cake（6吋）",
+            price: 1480,
+            category: "6吋典藏蛋糕",
+            svgKind: "earl_grey_gold",
+            photo: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=800&q=80",
+            desc: "奧地利伯爵紅茶慕斯與食用金箔點綴的精品蛋糕，佛手柑茶韻與黑巧克力甘納許完美融合。",
+            ingredients: "奧地利皇家伯爵茶、食用金箔、72%黑巧克力甘納許、榛果脆片",
+            pairing: "無糖錫蘭紅茶 / 手沖單品"
+          },
+          {
+            id: "d4-6",
+            name: "三重奏－手工餅乾禮盒",
+            price: 650,
+            category: "歐式茶點",
+            svgKind: "cookie_trio",
+            photo: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80",
+            desc: "維也納經典杏仁酥餅、可可曲奇與奶油沙布列三款手工餅乾，酥鬆化口散發純正奶香。",
+            ingredients: "法國發酵奶油、杏仁片、荷蘭可可粉、海鹽之花",
+            pairing: "維也納黑咖啡 / 皇家奶茶"
+          }
+        ]
+      }
+    ];
+
+    // 4 則真實感初始旅人評論
+    const DEFAULT_REVIEWS = [
+      {
+        id: "rev-1",
+        shopId: "shop-1",
+        dishName: "［常磐］小山園抹茶戚風蛋糕",
+        author: "板橋抹茶控小柚",
+        rating: 5,
+        comment: "［常磐］小山園抹茶戚風蛋糕茶香超級濃郁卻完全不苦澀，鮮奶油輕盈化口，配無糖煎茶在光正街巷弄裡度過超療癒的午後！",
+        timestamp: "2026-11-20 18:45",
+        likes: 16,
+        liked: false
+      },
+      {
+        id: "rev-2",
+        shopId: "shop-2",
+        dishName: "無花果麻糬蛋糕",
+        author: "果塔收藏家阿哲",
+        rating: 5,
+        comment: "無花果麻糬蛋糕的果肉清甜多汁，切開還有軟Q麻糬與香草乳酪卡士達，酥脆手工塔皮層次超豐富！",
+        timestamp: "2026-11-18 15:20",
+        likes: 19,
+        liked: false
+      },
+      {
+        id: "rev-3",
+        shopId: "shop-3",
+        dishName: "屏東萬丹紅豆麻糬巴斯克（6吋）",
+        author: "山城慢旅人",
+        rating: 5,
+        comment: "屏東萬丹紅豆麻糬巴斯克令人驚豔！半熟流心乳酪夾著綿密紅豆泥與軟Q麻糬，當苗栗伴手禮送給家人大家都很喜歡。",
+        timestamp: "2026-11-16 14:10",
+        likes: 14,
+        liked: false
+      },
+      {
+        id: "rev-4",
+        shopId: "shop-4",
+        dishName: "夢幻島 Neverland（6吋）",
+        author: "維也納圓舞曲",
+        rating: 5,
+        comment: "夢幻島 Neverland 外型精緻得像藝術品，開心果香草奶油與鮮果酸甜爽口不甜膩，搭配維也納米朗琪咖啡很有儀式感。",
+        timestamp: "2026-11-14 19:30",
+        likes: 12,
+        liked: false
+      }
+    ];
+
+    // 全新獨立 localStorage 鍵名，確保乾淨無衝突
+    const STORAGE_SHOPS_KEY = "dessert_storybook_v5_shops";
+    const STORAGE_REVIEWS_KEY = "dessert_storybook_v5_reviews";
+    const STORAGE_WISHLIST_KEY = "dessert_storybook_v5_wishlist";
+
+    let shops = [];
+    let reviews = [];
+    let wishlist = [];
+    let currentShopId = null;
+    let currentDishCategory = "全部";
+    let drawerReviewFilter = "all";
+    let editingShopPhotoId = null;
+
+    // 輪盤狀態
+    let wheelAngle = 0;
+    let wheelSpinning = false;
+    let audioCtx = null;
+
+    // =========================================================================
+    // 2. 專屬訂製繪本 SVG 甜點與店面插畫（圖片載入異常時自動精準對應呈現）
+    // =========================================================================
+    function handleImgFallback(imgEl, kind, svgKind, label) {
+      if (imgEl.dataset.fallbackDone === "1") return;
+      imgEl.dataset.fallbackDone = "1";
+
+      const safeLabel = String(label || "手作甜點").replace(/[<>&'"]/g, "");
+
+      if (kind === "store") {
+        const storeSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+          <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F7EFE4"/><stop offset="100%" stop-color="#E7D6BE"/></linearGradient></defs>
+          <rect width="800" height="500" fill="url(#sg)"/>
+          <rect x="24" y="24" width="752" height="452" rx="22" fill="none" stroke="#C7A063" stroke-width="2" stroke-dasharray="8 6"/>
+          <path d="M235 215 L400 118 L565 215 Z" fill="#C86D7C"/>
+          <rect x="265" y="215" width="270" height="150" rx="12" fill="#FFFDF9" stroke="#C7A063" stroke-width="2.5"/>
+          <rect x="368" y="272" width="64" height="93" rx="32" fill="#D98A4E" opacity="0.88"/>
+          <circle cx="318" cy="272" r="24" fill="#DCE8E0" stroke="#C7A063" stroke-width="2"/>
+          <circle cx="482" cy="272" r="24" fill="#DCE8E0" stroke="#C7A063" stroke-width="2"/>
+          <text x="400" y="422" text-anchor="middle" fill="#3A2E28" font-family="serif" font-size="22" font-weight="bold">${safeLabel}</text>
+        </svg>`;
+        imgEl.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(storeSvg);
+        return;
+      }
+
+      // 針對 24 道甜點個別繪製外觀、顏色與食材完全吻合的 SVG 插畫
+      const artworkMap = {
+        matcha_chiffon: {
+          bg: "#E3EFE5",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="300" y="260" width="200" height="120" rx="22" fill="#5D8A66"/>
+                <path d="M300 282 Q330 325 360 288 Q400 335 440 288 Q470 325 500 282 L500 264 Q400 245 300 264 Z" fill="#355E3B"/>
+                <ellipse cx="400" cy="252" rx="48" ry="18" fill="#F9FBF8"/>`
+        },
+        strawberry_shortcake: {
+          bg: "#FBE9EC",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="300" y="255" width="200" height="125" rx="18" fill="#FFFDFB" stroke="#EED9C4" stroke-width="2"/>
+                <rect x="300" y="308" width="200" height="16" fill="#E64858"/>
+                <circle cx="355" cy="242" r="18" fill="#D92B3A"/><circle cx="400" cy="238" r="21" fill="#D92B3A"/><circle cx="445" cy="242" r="18" fill="#D92B3A"/>
+                <path d="M392 220 L400 228 L408 220" stroke="#4D7C4D" stroke-width="4" fill="none"/>`
+        },
+        brown_sugar_basque: {
+          bg: "#F5E7D6",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <path d="M305 268 Q400 245 495 268 L508 378 Q400 392 292 378 Z" fill="#D9A362"/>
+                <ellipse cx="400" cy="268" rx="95" ry="22" fill="#4B2B18"/>
+                <path d="M325 276 Q360 315 395 280 Q435 318 475 276" stroke="#6E3F22" stroke-width="10" fill="none" stroke-linecap="round"/>`
+        },
+        berry_crumble: {
+          bg: "#F8E5EA",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="300" y="275" width="200" height="105" rx="16" fill="#E3B372"/>
+                <circle cx="345" cy="266" r="15" fill="#B83B5E"/><circle cx="385" cy="260" r="16" fill="#4A4E8C"/><circle cx="425" cy="262" r="15" fill="#C93B5B"/><circle cx="458" cy="268" r="14" fill="#E8C284"/>`
+        },
+        dacquoise_tea: {
+          bg: "#F2ECE1",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="315" y="265" width="170" height="32" rx="16" fill="#DEC7A6"/>
+                <rect x="322" y="297" width="156" height="24" rx="10" fill="#6D8463"/>
+                <rect x="315" y="321" width="170" height="32" rx="16" fill="#DEC7A6"/>`
+        },
+        guava_chiffon: {
+          bg: "#F9E7EC",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="300" y="260" width="200" height="120" rx="22" fill="#8C7462"/>
+                <path d="M300 280 Q350 315 400 285 Q450 315 500 280 L500 264 Q400 245 300 264 Z" fill="#F294A5"/>
+                <circle cx="400" cy="250" r="16" fill="#7CA36E"/>`
+        },
+        fig_mochi_tart: {
+          bg: "#F3E6F0",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <path d="M295 315 L505 315 L485 380 L315 380 Z" fill="#D8A15D"/>
+                <rect x="305" y="295" width="190" height="22" rx="10" fill="#FFFDF9"/>
+                <path d="M345 295 Q365 245 385 295 Z" fill="#7D3C63"/><path d="M380 295 Q400 240 420 295 Z" fill="#D96B84"/><path d="M415 295 Q435 245 455 295 Z" fill="#7D3C63"/>`
+        },
+        forest_berry_cake: {
+          bg: "#EFE7F4",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="305" y="275" width="190" height="105" rx="18" fill="#F7EFE4" stroke="#E0CBB4" stroke-width="2"/>
+                <circle cx="350" cy="264" r="14" fill="#3D4C8A"/><circle cx="385" cy="258" r="16" fill="#C93458"/><circle cx="420" cy="260" r="15" fill="#3D4C8A"/><circle cx="452" cy="266" r="14" fill="#D93848"/>`
+        },
+        fruit_pudding_cup: {
+          bg: "#FBF1DC",
+          art: `<path d="M325 270 L475 270 L455 390 L345 390 Z" fill="#F7C96B" stroke="#E0C9A6" stroke-width="3"/>
+                <path d="M325 270 L475 270 L471 292 L329 292 Z" fill="#7A4424"/>
+                <circle cx="368" cy="256" r="15" fill="#D93848"/><circle cx="402" cy="252" r="16" fill="#73A857"/><circle cx="435" cy="257" r="14" fill="#F29F38"/>`
+        },
+        seasonal_fruit_tart: {
+          bg: "#FDF3E2",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <path d="M295 315 L505 315 L485 380 L315 380 Z" fill="#D8A15D"/>
+                <circle cx="350" cy="296" r="18" fill="#76A856"/><circle cx="400" cy="292" r="20" fill="#D93848"/><circle cx="448" cy="296" r="17" fill="#465796"/>`
+        },
+        sweet_potato_tart: {
+          bg: "#FBF1D9",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <path d="M295 318 L505 318 L485 380 L315 380 Z" fill="#C98E4B"/>
+                <path d="M312 318 Q400 232 488 318 Z" fill="#E8B238"/>
+                <path d="M335 300 Q400 265 465 300" stroke="#B87A24" stroke-width="5" fill="none"/>`
+        },
+        fig_cake_6inch: {
+          bg: "#F5E8F1",
+          art: `<ellipse cx="400" cy="395" rx="190" ry="38" fill="#FFF"/>
+                <rect x="290" y="268" width="220" height="112" rx="18" fill="#F9F2E8" stroke="#DEC8B0" stroke-width="2"/>
+                <circle cx="340" cy="256" r="17" fill="#7D3C63"/><circle cx="380" cy="252" r="18" fill="#D46680"/><circle cx="420" cy="252" r="18" fill="#7D3C63"/><circle cx="460" cy="256" r="17" fill="#D46680"/>`
+        },
+        fufu_mochi: {
+          bg: "#F7EFEA",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <ellipse cx="355" cy="335" rx="58" ry="44" fill="#FFFFFF" stroke="#E5D8C8" stroke-width="2"/>
+                <ellipse cx="448" cy="335" rx="58" ry="44" fill="#F8ECEF" stroke="#E5D8C8" stroke-width="2"/>
+                <circle cx="355" cy="306" r="12" fill="#D93848"/>`
+        },
+        apple_cheesecake: {
+          bg: "#FBECEB",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="300" y="275" width="200" height="105" rx="16" fill="#F7EFE4" stroke="#DFC7B0" stroke-width="2"/>
+                <path d="M335 275 Q368 238 400 275 Z" fill="#D65B5B"/><path d="M385 275 Q418 238 450 275 Z" fill="#E37B6B"/>`
+        },
+        redbean_basque: {
+          bg: "#F4E8DE",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <path d="M305 268 Q400 245 495 268 L508 378 Q400 392 292 378 Z" fill="#E0B175"/>
+                <ellipse cx="400" cy="268" rx="95" ry="22" fill="#522F1C"/>
+                <rect x="315" y="325" width="170" height="18" rx="8" fill="#7A353E"/>`
+        },
+        madeleine_box: {
+          bg: "#FAF0DF",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <ellipse cx="355" cy="322" rx="44" ry="56" fill="#DDA35D" stroke="#B87A35" stroke-width="2"/>
+                <ellipse cx="445" cy="322" rx="44" ry="56" fill="#6F946E" stroke="#4D6E4C" stroke-width="2"/>`
+        },
+        nut_tart_box: {
+          bg: "#F4EAE0",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <path d="M300 315 L500 315 L480 380 L320 380 Z" fill="#C98E52"/>
+                <ellipse cx="360" cy="302" rx="22" ry="15" fill="#E8C79B"/><ellipse cx="405" cy="298" rx="24" ry="16" fill="#8C582B"/><ellipse cx="445" cy="303" rx="20" ry="14" fill="#D9A86C"/>`
+        },
+        hakka_mochi: {
+          bg: "#EEF2E6",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <ellipse cx="355" cy="335" rx="58" ry="44" fill="#D9E2C8" stroke="#B8C7A1" stroke-width="2"/>
+                <ellipse cx="448" cy="335" rx="58" ry="44" fill="#F2DEC2" stroke="#D9BE98" stroke-width="2"/>`
+        },
+        cheese_brownie: {
+          bg: "#EFE7E2",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="305" y="268" width="190" height="112" rx="12" fill="#46281E"/>
+                <path d="M315 288 Q360 272 400 292 Q445 310 485 286" stroke="#F4E6D2" stroke-width="14" fill="none" stroke-linecap="round"/>`
+        },
+        heart_mousse: {
+          bg: "#FCE8EC",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <path d="M400 375 C320 325 305 260 355 245 C382 238 400 262 400 262 C400 262 418 238 445 245 C495 260 480 325 400 375 Z" fill="#D93854"/>`
+        },
+        neverland_cake: {
+          bg: "#F6ECF2",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="295" y="265" width="210" height="115" rx="20" fill="#B5CFA8" stroke="#93B384" stroke-width="2"/>
+                <circle cx="355" cy="252" r="16" fill="#E3536B"/><circle cx="400" cy="246" r="18" fill="#FFFDF9"/><circle cx="445" cy="252" r="16" fill="#E3536B"/>`
+        },
+        taro_chiffon: {
+          bg: "#EFE9F7",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="300" y="260" width="200" height="120" rx="20" fill="#C4B0DC"/>
+                <rect x="300" y="310" width="200" height="18" fill="#9A7EC2"/>
+                <path d="M300 278 Q400 296 500 278 L500 262 Q400 248 300 262 Z" fill="#F8F5FC"/>`
+        },
+        earl_grey_gold: {
+          bg: "#F3ECE3",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <rect x="295" y="265" width="210" height="115" rx="18" fill="#9E7652"/>
+                <polygon points="390,248 412,244 406,262 386,258" fill="#F2C94C"/>`
+        },
+        cookie_trio: {
+          bg: "#F6EFE6",
+          art: `<ellipse cx="400" cy="395" rx="185" ry="38" fill="#FFF"/>
+                <circle cx="345" cy="332" r="36" fill="#D9A15D"/><circle cx="402" cy="322" r="36" fill="#5C3826"/><circle cx="458" cy="334" r="36" fill="#E8C794"/>`
+        }
+      };
+
+      const item = artworkMap[svgKind] || artworkMap.strawberry_shortcake;
+      const dishSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+        <rect width="800" height="600" fill="${item.bg}"/>
+        <rect x="24" y="24" width="752" height="552" rx="22" fill="none" stroke="#C7A063" stroke-width="2" stroke-dasharray="8 6"/>
+        ${item.art}
+        <text x="400" y="486" text-anchor="middle" fill="#3A2E28" font-family="serif" font-size="22" font-weight="bold">${safeLabel}</text>
+        <text x="400" y="516" text-anchor="middle" fill="#78685E" font-family="sans-serif" font-size="13" letter-spacing="2">PATISSERIE STORYBOOK ILLUSTRATION</text>
+      </svg>`;
+
+      imgEl.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(dishSvg);
+    }
+
+    // =========================================================================
+    // 3. 初始化與資料持久化
+    // =========================================================================
+    function init() {
+      try {
+        const s = localStorage.getItem(STORAGE_SHOPS_KEY);
+        shops = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_SHOPS));
+
+        const r = localStorage.getItem(STORAGE_REVIEWS_KEY);
+        reviews = r ? JSON.parse(r) : JSON.parse(JSON.stringify(DEFAULT_REVIEWS));
+
+        const w = localStorage.getItem(STORAGE_WISHLIST_KEY);
+        wishlist = w ? JSON.parse(w) : [];
+      } catch (e) {
+        shops = JSON.parse(JSON.stringify(DEFAULT_SHOPS));
+        reviews = JSON.parse(JSON.stringify(DEFAULT_REVIEWS));
+        wishlist = [];
+      }
+
+      renderShopsGrid();
+      initReviewFormSelects();
+      updateReviewBadges();
+      updateWishlistBadge();
+      drawWheelCanvas();
+    }
+
+    function persistAll() {
+      try {
+        localStorage.setItem(STORAGE_SHOPS_KEY, JSON.stringify(shops));
+        localStorage.setItem(STORAGE_REVIEWS_KEY, JSON.stringify(reviews));
+        localStorage.setItem(STORAGE_WISHLIST_KEY, JSON.stringify(wishlist));
+      } catch (e) {}
+    }
+
+    function getShopRatingStats(shopId) {
+      const list = reviews.filter(r => r.shopId === shopId);
+      if (!list.length) return { avg: "5.0", count: 0 };
+      const sum = list.reduce((acc, item) => acc + Number(item.rating || 5), 0);
+      return { avg: (sum / list.length).toFixed(1), count: list.length };
+    }
+
+    // =========================================================================
+    // 4. 首頁四格小店櫥窗與單店菜單切換
+    // =========================================================================
+    function renderShopsGrid() {
+      const grid = document.getElementById("shops-grid");
+      if (!grid) return;
+
+      grid.innerHTML = shops.map(shop => {
+        const stats = getShopRatingStats(shop.id);
+        return `
+          <article class="shop-card" onclick="openShopPage('${shop.id}')">
+            <div class="shop-card-inner">
+              <div class="polaroid-box">
+                <img
+                  src="${shop.storePhoto}"
+                  alt="${shop.name}"
+                  onerror="handleImgFallback(this, 'store', 'store', '${shop.shortName}')"
+                />
+                <span class="chapter-ribbon" style="background: ${shop.color};">${shop.chapter}</span>
+                <button
+                  type="button"
+                  class="photo-replace-btn"
+                  onclick="event.stopPropagation(); openPhotoModal('${shop.id}')"
+                >📷 換外觀照</button>
+              </div>
+
+              <div class="shop-meta-row">
+                <span>🍰 ${shop.dishes.length} 道招牌甜點</span>
+                <span class="shop-rating-pill">★ ${stats.avg}（${stats.count}）</span>
+              </div>
+
+              <div>
+                <h2 class="shop-name">${shop.name}</h2>
+                <p class="shop-tagline">${shop.tagline}</p>
+              </div>
+
+              <div class="shop-info-list">
+                <div>📍 ${shop.address}</div>
+                <div>🕒 ${shop.hours}</div>
+              </div>
+
+              <div class="shop-card-actions">
+                <button
+                  type="button"
+                  class="btn-open-menu"
+                  style="background: ${shop.color};"
+                  onclick="event.stopPropagation(); openShopPage('${shop.id}')"
+                >📖 翻開菜單</button>
+                <a
+                  href="${shop.website}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-outline-sm"
+                  onclick="event.stopPropagation()"
+                >🌐 官網</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function openShopPage(shopId) {
+      const shop = shops.find(s => s.id === shopId);
+      if (!shop) return;
+
+      currentShopId = shopId;
+      currentDishCategory = "全部";
+
+      document.getElementById("home-view").classList.add("hidden");
+      document.getElementById("shop-detail-view").classList.remove("hidden");
+
+      renderShopDetailBanner(shop);
+      renderDishCategories(shop);
+      renderDishesGrid(shop);
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goHome() {
+      currentShopId = null;
+      document.getElementById("shop-detail-view").classList.add("hidden");
+      document.getElementById("home-view").classList.remove("hidden");
+      renderShopsGrid();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderShopDetailBanner(shop) {
+      const stats = getShopRatingStats(shop.id);
+      const banner = document.getElementById("shop-detail-banner");
+      banner.innerHTML = `
+        <div class="polaroid-box">
+          <img
+            src="${shop.storePhoto}"
+            alt="${shop.name}"
+            onerror="handleImgFallback(this, 'store', 'store', '${shop.shortName}')"
+          />
+          <span class="chapter-ribbon" style="background: ${shop.color};">${shop.chapter}</span>
+          <button type="button" class="photo-replace-btn" onclick="openPhotoModal('${shop.id}')">
+            📷 換外觀照
+          </button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span class="shop-rating-pill">★ 平均 ${stats.avg} 分（${stats.count} 則評論）</span>
+            <a href="${shop.website}" target="_blank" rel="noopener noreferrer" class="btn-outline-sm">🌐 前往官方網站</a>
+          </div>
+          <h1 class="font-serif" style="font-size: clamp(22px, 3vw, 28px); font-weight: 700;">${shop.name}</h1>
+          <p style="font-size: 14px; color: var(--ink-muted);">${shop.tagline}</p>
+          <div class="shop-info-list">
+            <div>📍 <strong>門市地址：</strong>${shop.address}</div>
+            <div>🕒 <strong>營業時間：</strong>${shop.hours}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDishCategories(shop) {
+      const cats = ["全部", ...new Set(shop.dishes.map(d => d.category))];
+      const bar = document.getElementById("dish-category-bar");
+      bar.innerHTML = cats.map(c => `
+        <button
+          type="button"
+          class="cat-pill ${c === currentDishCategory ? "active" : ""}"
+          onclick="selectDishCategory('${c}')"
+        >${c}</button>
+      `).join("");
+    }
+
+    function selectDishCategory(cat) {
+      currentDishCategory = cat;
+      const shop = shops.find(s => s.id === currentShopId);
+      if (!shop) return;
+      renderDishCategories(shop);
+      renderDishesGrid(shop);
+    }
+
+    function renderDishesGrid(shop) {
+      const grid = document.getElementById("dishes-grid");
+      const list = currentDishCategory === "全部"
+        ? shop.dishes
+        : shop.dishes.filter(d => d.category === currentDishCategory);
+
+      grid.innerHTML = list.map(dish => `
+        <article class="dish-card">
+          <div class="dish-photo-wrap" onclick="openDishModal('${shop.id}', '${dish.id}')">
+            <img
+              src="${dish.photo}"
+              alt="${dish.name}"
+              onerror="handleImgFallback(this, 'dish', '${dish.svgKind}', '${dish.name}')"
+            />
+            <span class="dish-cat-tag">${dish.category}</span>
+          </div>
+          <div class="dish-body">
+            <h3 class="dish-title" onclick="openDishModal('${shop.id}', '${dish.id}')">${dish.name}</h3>
+            <p class="dish-desc">${dish.desc}</p>
+            <div class="dish-footer">
+              <span class="dish-price">NT$ ${dish.price.toLocaleString("zh-TW")}</span>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn-outline-sm" onclick="openDishModal('${shop.id}', '${dish.id}')">風味筆記</button>
+                <button
+                  type="button"
+                  class="pill-btn pill-btn-dark"
+                  style="padding: 7px 12px; font-size: 12px;"
+                  onclick="addToWishlist('${shop.id}', '${dish.id}')"
+                >+ 心願單</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // =========================================================================
+    // 5. 甜點風味筆記詳情彈窗
+    // =========================================================================
+    function openDishModal(shopId, dishId) {
+      const shop = shops.find(s => s.id === shopId);
+      const dish = shop?.dishes.find(d => d.id === dishId);
+      if (!shop || !dish) return;
+
+      const body = document.getElementById("dish-modal-body");
+      body.innerHTML = `
+        <div style="aspect-ratio: 4/3; background: var(--bg-soft); overflow: hidden;">
+          <img
+            src="${dish.photo}"
+            alt="${dish.name}"
+            onerror="handleImgFallback(this, 'dish', '${dish.svgKind}', '${dish.name}')"
+            style="width: 100%; height: 100%; object-fit: cover;"
+          />
+        </div>
+        <div style="padding: 22px; display: flex; flex-direction: column; gap: 11px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span style="padding: 3px 10px; border-radius: 999px; background: ${shop.color}; color: #FFF; font-size: 11px; font-weight: 600;">${shop.shortName}</span>
+            <span style="padding: 3px 10px; border-radius: 999px; background: var(--bg-cream); border: 1px solid var(--border-lace); font-size: 11px;">${dish.category}</span>
+          </div>
+          <h3 class="font-serif" style="font-size: 20px; font-weight: 700;">${dish.name}</h3>
+          <p style="font-size: 13.5px; color: var(--ink-main); line-height: 1.65;">${dish.desc}</p>
+          <div style="background: var(--bg-cream); padding: 10px 14px; border-radius: 12px; font-size: 12.5px; border: 1px dashed var(--gold-accent); display: flex; flex-direction: column; gap: 4px;">
+            <div>🌾 <strong>精選食材：</strong>${dish.ingredients}</div>
+            <div>🍵 <strong>推薦佐茶：</strong>${dish.pairing}</div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 8px;">
+            <span class="font-serif" style="font-size: 21px; font-weight: 700;">NT$ ${dish.price.toLocaleString("zh-TW")}</span>
+            <button
+              type="button"
+              class="pill-btn pill-btn-dark"
+              onclick="addToWishlist('${shop.id}', '${dish.id}'); closeDishModal();"
+            >❤️ 加入甜點心願清單</button>
+          </div>
+        </div>
+      `;
+      document.getElementById("dish-modal").classList.add("open");
+    }
+
+    function closeDishModal() {
+      document.getElementById("dish-modal").classList.remove("open");
+    }
+
+    // =========================================================================
+    // 6. 右側常駐「四格餐廳抽選轉盤」與清脆撥片音效
+    // =========================================================================
+    function playWheelTick() {
+      try {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(680, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(220, audioCtx.currentTime + 0.035);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.035);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.04);
+      } catch (e) {}
+    }
+
+    function drawWheelCanvas() {
+      const canvas = document.getElementById("wheel-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      const size = 268;
+      const cx = size / 2;
+      const cy = size / 2;
+      const radius = size / 2 - 5;
+      const count = shops.length;
+      const arc = (Math.PI * 2) / count;
+
+      ctx.clearRect(0, 0, size, size);
+
+      // 外圈胡桃木與金色邊框
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = "#3A2E28";
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#C7A063";
+      ctx.stroke();
+
+      for (let i = 0; i < count; i++) {
+        const shop = shops[i];
+        const start = wheelAngle + i * arc - Math.PI / 2;
+        const end = start + arc;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, radius - 8, start, end);
+        ctx.closePath();
+        ctx.fillStyle = shop.wheelBg;
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#C7A063";
+        ctx.stroke();
+
+        // 外圈金色裝飾鉚釘
+        const pinAngle = start;
+        const px = cx + Math.cos(pinAngle) * (radius - 4);
+        const py = cy + Math.sin(pinAngle) * (radius - 4);
+        ctx.beginPath();
+        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = "#F7DFC2";
+        ctx.fill();
+
+        // 扇形文字
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(start + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = shop.color;
+        ctx.font = "700 9.5px 'Noto Serif TC', serif";
+        ctx.fillText(shop.chapter, radius - 18, -7);
+
+        ctx.fillStyle = "#3A2E28";
+        ctx.font = "700 13px 'Noto Serif TC', serif";
+        ctx.fillText(shop.shortName, radius - 18, 10);
+        ctx.restore();
+      }
+    }
+
+    function spinWheel() {
+      if (wheelSpinning) return;
+      wheelSpinning = true;
+
+      const btn = document.getElementById("wheel-spin-btn");
+      btn.style.opacity = "0.75";
+
+      const arc = (Math.PI * 2) / shops.length;
+      const spins = 4 + Math.random() * 2;
+      const target = wheelAngle + spins * Math.PI * 2 + Math.random() * Math.PI * 2;
+      const start = wheelAngle;
+      const duration = 3400;
+      const t0 = performance.now();
+      let lastSector = Math.floor(wheelAngle / arc);
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function step(now) {
+        const elapsed = now - t0;
+        const progress = Math.min(elapsed / duration, 1);
+        wheelAngle = start + (target - start) * easeOutCubic(progress);
+        drawWheelCanvas();
+
+        const currentSector = Math.floor(wheelAngle / arc);
+        if (currentSector !== lastSector) {
+          playWheelTick();
+          lastSector = currentSector;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          wheelSpinning = false;
+          btn.style.opacity = "1";
+
+          const normalized = ((-wheelAngle) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
+          const winIndex = Math.floor(normalized / arc) % shops.length;
+          const winShop = shops[winIndex];
+          const luckyDish = winShop.dishes[Math.floor(Math.random() * winShop.dishes.length)];
+
+          renderWheelWinner(winShop, luckyDish);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    function renderWheelWinner(shop, dish) {
+      const box = document.getElementById("wheel-result-box");
+      box.innerHTML = `
+        <span style="display: inline-block; padding: 3px 11px; border-radius: 999px; background: ${shop.color}; color: #FFF; font-size: 11px; font-weight: 700; margin-bottom: 5px;">
+          ✨ 今日命定甜點店 · ${shop.chapter}
+        </span>
+        <h3 class="font-serif" style="font-size: 17.5px; font-weight: 700; margin-bottom: 4px;">${shop.name}</h3>
+        <p style="font-size: 12.5px; color: var(--ink-muted); margin-bottom: 12px;">
+          🍀 推薦招牌：<strong style="color: var(--ink-main);">${dish.name}</strong>（NT$ ${dish.price}）
+        </p>
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+          <button
+            type="button"
+            class="pill-btn pill-btn-dark"
+            style="font-size: 12.5px;"
+            onclick="openShopPage('${shop.id}')"
+          >📖 立即翻開菜單</button>
+          <button type="button" class="pill-btn" style="font-size: 12.5px;" onclick="spinWheel()">🔄 再轉一次</button>
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // 7. 獨立「旅人留言板」木牌抽屜（不混在首頁中）
+    // =========================================================================
+    function openReviewDrawer(preselectShopId) {
+      const drawer = document.getElementById("review-drawer");
+      if (preselectShopId) {
+        const shopSel = document.getElementById("rev-shop-select");
+        if (shopSel) {
+          shopSel.value = preselectShopId;
+          syncReviewDishOptions();
+        }
+        drawerReviewFilter = preselectShopId;
+      } else {
+        drawerReviewFilter = "all";
+      }
+      renderDrawerReviews();
+      drawer.classList.add("open");
+    }
+
+    function closeReviewDrawer() {
+      document.getElementById("review-drawer").classList.remove("open");
+    }
+
+    function initReviewFormSelects() {
+      const shopSel = document.getElementById("rev-shop-select");
+      if (!shopSel) return;
+      shopSel.innerHTML = shops.map(s =>
+        `<option value="${s.id}">${s.chapter}｜${s.shortName}</option>`
+      ).join("");
+      syncReviewDishOptions();
+    }
+
+    function syncReviewDishOptions() {
+      const shopSel = document.getElementById("rev-shop-select");
+      const dishSel = document.getElementById("rev-dish-select");
+      if (!shopSel || !dishSel) return;
+      const shop = shops.find(s => s.id === shopSel.value) || shops[0];
+      dishSel.innerHTML = `<option value="">（全店綜合心得）</option>` +
+        shop.dishes.map(d => `<option value="${d.name}">${d.name}</option>`).join("");
+    }
+
+    function setFormRating(val) {
+      const box = document.getElementById("rev-stars-box");
+      if (!box) return;
+      box.dataset.rating = String(val);
+      box.querySelectorAll(".star-btn").forEach(btn => {
+        btn.classList.toggle("active", Number(btn.dataset.val) <= val);
+      });
+      const lbl = document.getElementById("rev-rating-label");
+      if (lbl) lbl.textContent = `${val} 星`;
+    }
+
+    function updateCharCount() {
+      const ta = document.getElementById("rev-comment-input");
+      const counter = document.getElementById("rev-char-count");
+      if (ta && counter) counter.textContent = `${ta.value.length} / 500`;
+    }
+
+    function renderStars(count) {
+      let s = "";
+      for (let i = 1; i <= 5; i++) s += i <= count ? "★" : "☆";
+      return `<span class="star-display">${s}</span>`;
+    }
+
+    function updateReviewBadges() {
+      const total = reviews.length;
+      const navBadge = document.getElementById("nav-review-count");
+      const woodBadge = document.getElementById("wood-review-count");
+      if (navBadge) navBadge.textContent = total;
+      if (woodBadge) woodBadge.textContent = total;
+    }
+
+    function renderDrawerReviews() {
+      const filterBar = document.getElementById("drawer-review-filters");
+      const listBox = document.getElementById("drawer-reviews-list");
+      if (!filterBar || !listBox) return;
+
+      const tabs = [
+        { id: "all", label: `全部 (${reviews.length})` },
+        ...shops.map(s => ({
+          id: s.id,
+          label: `${s.shortName} (${reviews.filter(r => r.shopId === s.id).length})`
+        }))
+      ];
+
+      filterBar.innerHTML = tabs.map(t => `
+        <button
+          type="button"
+          class="cat-pill ${drawerReviewFilter === t.id ? "active" : ""}"
+          style="padding: 5px 11px; font-size: 11.5px;"
+          onclick="setDrawerReviewFilter('${t.id}')"
+        >${t.label}</button>
+      `).join("");
+
+      const filtered = drawerReviewFilter === "all"
+        ? reviews
+        : reviews.filter(r => r.shopId === drawerReviewFilter);
+
+      if (!filtered.length) {
+        listBox.innerHTML = `<div class="review-card" style="text-align: center; color: var(--ink-muted); font-size: 13px;">目前這家店還沒有留言，快在上方寫下第一則吧 🍰</div>`;
+        return;
+      }
+
+      listBox.innerHTML = filtered.map(rev => {
+        const shop = shops.find(s => s.id === rev.shopId) || shops[0];
+        return `
+          <article class="review-card">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div class="avatar-circle">${rev.author.slice(0, 1)}</div>
+              <div style="min-width: 0; flex: 1;">
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                  <strong style="font-size: 13.5px;">${rev.author}</strong>
+                  <span style="padding: 2px 8px; border-radius: 999px; background: ${shop.color}; color: #FFF; font-size: 10.5px;">${shop.shortName}</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
+                  ${renderStars(rev.rating)}
+                  <span style="font-size: 11px; color: var(--ink-muted);">${rev.timestamp}</span>
+                </div>
+              </div>
+            </div>
+
+            ${rev.dishName ? `<div style="margin-top: 8px; font-size: 11.5px; color: var(--wood-dark); background: var(--bg-cream); padding: 3px 9px; border-radius: 8px; display: inline-block;">🍰 品嚐甜點：${rev.dishName}</div>` : ""}
+
+            <p style="font-size: 13px; color: var(--ink-main); line-height: 1.6; margin: 8px 0;">
+              ${rev.comment}
+            </p>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px dashed var(--border-lace); font-size: 11.5px;">
+              <button
+                type="button"
+                class="pill-btn"
+                style="padding: 3px 10px; font-size: 11.5px; ${rev.liked ? "background: #FDF0F2; border-color: #C86D7C; color: #9E3E4E;" : ""}"
+                onclick="toggleLikeReview('${rev.id}')"
+              >${rev.liked ? "❤️" : "🤍"} 有幫助 (${rev.likes})</button>
+
+              <button
+                type="button"
+                style="color: var(--ink-muted); font-weight: 500;"
+                onclick="closeReviewDrawer(); openShopPage('${shop.id}');"
+              >翻開該店菜單 →</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function setDrawerReviewFilter(shopId) {
+      drawerReviewFilter = shopId;
+      renderDrawerReviews();
+    }
+
+    function submitReview(event) {
+      event.preventDefault();
+      const shopId = document.getElementById("rev-shop-select").value;
+      const dishName = document.getElementById("rev-dish-select").value;
+      const rating = Number(document.getElementById("rev-stars-box").dataset.rating || 5);
+      const author = document.getElementById("rev-author-input").value.trim();
+      const comment = document.getElementById("rev-comment-input").value.trim();
+
+      if (!author || !comment) return;
+
+      const now = new Date();
+      const pad = n => String(n).padStart(2, "0");
+      const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+      reviews.unshift({
+        id: `rev-${Date.now()}`,
+        shopId,
+        dishName,
+        author,
+        rating,
+        comment,
+        timestamp,
+        likes: 1,
+        liked: true
+      });
+
+      persistAll();
+      updateReviewBadges();
+
+      document.getElementById("rev-author-input").value = "";
+      document.getElementById("rev-comment-input").value = "";
+      updateCharCount();
+      setFormRating(5);
+
+      renderDrawerReviews();
+      renderShopsGrid();
+      if (currentShopId) {
+        const s = shops.find(item => item.id === currentShopId);
+        if (s) renderShopDetailBanner(s);
+      }
+
+      showToast("感謝分享！你的甜點留言已張貼至留言板");
+    }
+
+    function toggleLikeReview(revId) {
+      const item = reviews.find(r => r.id === revId);
+      if (!item) return;
+      item.liked = !item.liked;
+      item.likes += item.liked ? 1 : -1;
+      persistAll();
+      renderDrawerReviews();
+    }
+
+    // =========================================================================
+    // 8. 替換店家外觀照片
+    // =========================================================================
+    function openPhotoModal(shopId) {
+      editingShopPhotoId = shopId;
+      const shop = shops.find(s => s.id === shopId);
+      document.getElementById("photo-modal-title").textContent = `替換「${shop.shortName}」外觀照片`;
+      document.getElementById("photo-url-input").value = "";
+      document.getElementById("photo-file-input").value = "";
+      document.getElementById("photo-modal").classList.add("open");
+    }
+
+    function closePhotoModal() {
+      document.getElementById("photo-modal").classList.remove("open");
+    }
+
+    function handleLocalPhotoUpload(event) {
+      const file = event.target.files?.[0];
+      if (!file || !editingShopPhotoId) return;
+
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          const maxW = 900;
+          const scale = Math.min(1, maxW / img.width);
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          const dataUrl = canvas.toDataURL("image/jpeg", 0.82);
+          updateShopPhoto(editingShopPhotoId, dataUrl);
+          closePhotoModal();
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function applyPhotoUrl() {
+      const url = document.getElementById("photo-url-input").value.trim();
+      if (!url || !editingShopPhotoId) return;
+      updateShopPhoto(editingShopPhotoId, url);
+      closePhotoModal();
+    }
+
+    function resetSingleShopPhoto() {
+      if (!editingShopPhotoId) return;
+      const orig = DEFAULT_SHOPS.find(s => s.id === editingShopPhotoId);
+      if (orig) {
+        updateShopPhoto(editingShopPhotoId, orig.storePhoto);
+        closePhotoModal();
+      }
+    }
+
+    function updateShopPhoto(shopId, photoUrl) {
+      const shop = shops.find(s => s.id === shopId);
+      if (!shop) return;
+      shop.storePhoto = photoUrl;
+      persistAll();
+      renderShopsGrid();
+      if (currentShopId === shopId) renderShopDetailBanner(shop);
+      showToast("店家外觀照片已更新！");
+    }
+
+    // =========================================================================
+    // 9. 甜點心願清單抽屜與匯出完整 HTML
+    // =========================================================================
+    function addToWishlist(shopId, dishId) {
+      const shop = shops.find(s => s.id === shopId);
+      const dish = shop?.dishes.find(d => d.id === dishId);
+      if (!shop || !dish) return;
+
+      const existing = wishlist.find(item => item.dishId === dishId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        wishlist.push({
+          shopName: shop.shortName,
+          dishId: dish.id,
+          dishName: dish.name,
+          price: dish.price,
+          qty: 1
+        });
+      }
+
+      persistAll();
+      updateWishlistBadge();
+      renderWishlistDrawer();
+      showToast(`已將「${dish.name}」加入心願清單`);
+    }
+
+    function changeWishQty(dishId, delta) {
+      const idx = wishlist.findIndex(item => item.dishId === dishId);
+      if (idx === -1) return;
+      wishlist[idx].qty += delta;
+      if (wishlist[idx].qty <= 0) {
+        wishlist.splice(idx, 1);
+      }
+      persistAll();
+      updateWishlistBadge();
+      renderWishlistDrawer();
+    }
+
+    function clearWishlist() {
+      wishlist = [];
+      persistAll();
+      updateWishlistBadge();
+      renderWishlistDrawer();
+      showToast("已清空甜點心願清單");
+    }
+
+    function updateWishlistBadge() {
+      const totalQty = wishlist.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById("nav-wish-count").textContent = totalQty;
+    }
+
+    function toggleWishlistDrawer(open) {
+      const drawer = document.getElementById("wishlist-drawer");
+      if (open) {
+        renderWishlistDrawer();
+        drawer.classList.add("open");
+      } else {
+        drawer.classList.remove("open");
+      }
+    }
+
+    function renderWishlistDrawer() {
+      const box = document.getElementById("wishlist-items-box");
+      const totalEl = document.getElementById("wishlist-total-price");
+
+      if (!wishlist.length) {
+        box.innerHTML = `<div style="text-align: center; padding: 48px 16px; color: var(--ink-muted); font-size: 13.5px;">心願清單還是空的喔～<br/>快去翻閱四間甜點店的菜單吧 🍰</div>`;
+        totalEl.textContent = "NT$ 0";
+        return;
+      }
+
+      let total = 0;
+      box.innerHTML = wishlist.map(item => {
+        total += item.price * item.qty;
+        return `
+          <div class="wish-item">
+            <div style="min-width: 0; flex: 1;">
+              <div style="font-size: 11px; color: var(--ink-muted);">${item.shopName}</div>
+              <div style="font-size: 13.5px; font-weight: 700; margin: 2px 0;">${item.dishName}</div>
+              <div style="font-size: 12.5px; color: var(--shop-2); font-weight: 600;">NT$ ${(item.price * item.qty).toLocaleString("zh-TW")}</div>
+            </div>
+            <div class="qty-box">
+              <button type="button" onclick="changeWishQty('${item.dishId}', -1)">−</button>
+              <strong>${item.qty}</strong>
+              <button type="button" onclick="changeWishQty('${item.dishId}', 1)">+</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      totalEl.textContent = `NT$ ${total.toLocaleString("zh-TW")}`;
+    }
+
+    function copyWishlistText() {
+      if (!wishlist.length) {
+        showToast("目前心願清單沒有品項可複製");
+        return;
+      }
+      const lines = wishlist.map(i => `・[${i.shopName}] ${i.dishName} x${i.qty}（NT$ ${i.price * i.qty}）`);
+      const total = wishlist.reduce((s, i) => s + i.price * i.qty, 0);
+      const text = `🍰 我的甜點童話集心願清單：\n${lines.join("\n")}\n預估總金額：NT$ ${total.toLocaleString("zh-TW")}`;
+
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      showToast("已複製甜點心願清單文字！");
+    }
+
+    function exportFullHtml() {
+      try {
+        const clone = document.documentElement.cloneNode(true);
+        const homeGrid = clone.querySelector("#shops-grid");
+        if (homeGrid) homeGrid.innerHTML = "";
+        const dishesGrid = clone.querySelector("#dishes-grid");
+        if (dishesGrid) dishesGrid.innerHTML = "";
+
+        const scripts = clone.querySelectorAll("script");
+        scripts.forEach(sc => {
+          if (sc.textContent.includes("const DEFAULT_SHOPS =")) {
+            sc.textContent = sc.textContent
+              .replace(/const DEFAULT_SHOPS = \[[\s\S]*?\n    \];/, `const DEFAULT_SHOPS = ${JSON.stringify(shops, null, 2)};`)
+              .replace(/const DEFAULT_REVIEWS = \[[\s\S]*?\n    \];/, `const DEFAULT_REVIEWS = ${JSON.stringify(reviews, null, 2)};`);
+          }
+        });
+
+        const htmlStr = "<!DOCTYPE html>\n" + clone.outerHTML;
+        const blob = new Blob([htmlStr], { type: "text/html;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "甜點童話集_四間手作甜點店散步地圖.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast("已成功匯出完整單頁 HTML 檔案！");
+      } catch (e) {
+        showToast("匯出失敗，請稍後再試");
+      }
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
+    }
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        closeReviewDrawer();
+        closeDishModal();
+        closePhotoModal();
+        toggleWishlistDrawer(false);
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
